@@ -27,3 +27,9 @@ PHPExcel Links:
 * [Download](http://phpexcel.codeplex.com/releases/view/45412).
 * [Documentation](http://phpexcel.codeplex.com/releases/view/45412)
 * [Cheat Sheet](http://blog.clock.co.uk/2011/04/08/phpexcel-cheatsheet/)
+
+## Credits
+[Tom Smith](https://github.com/iamsmith/)
+
+## Licence
+Licenced under the [New BSD License](http://opensource.org/licenses/bsd-license.php)
