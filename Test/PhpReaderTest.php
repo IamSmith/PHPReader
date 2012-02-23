@@ -2,7 +2,7 @@
 class PhpReaderTest extends PHPUnit_Framework_TestCase {
 
 	protected function setUp() {
-		require_once("/var/application/PHPReader/PhpReader.php");
+		require_once("PhpReader.php");
 	}
 
 	/**
