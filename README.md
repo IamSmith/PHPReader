@@ -2,13 +2,7 @@
 
 Allows you to iterate through a file and read each line by line and parse each row into an array regardless of file type.
 
-By default it will determine the file type by using the mime type, alternatively it will use the file extension to determine the file type.
-
-## Supported Mime Types:
-
-* text/csv, text/comma-separated-values - CSV file
-* application/vnd.ms-excel - Excel file
-* application/vnd.openxmlformats-officedocument.spreadsheetml.sheet - Excel 2007 file.
+It will use the file extension to determine the file type. Using the files mime type to determine its type is unreliable across all systems.
 
 ## Supported File Extensions:
 
