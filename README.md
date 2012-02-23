@@ -1,5 +1,7 @@
 # PHP Reader
 
+[![build status](https://secure.travis-ci.org/IamSmith/PHPReader.png)](http://travis-ci.org/IamSmith/PHPReader)
+
 Allows you to iterate through a file and read each line by line and parse each row into an array regardless of file type.
 
 It will use the file extension to determine the file type. Using the files mime type to determine its type is unreliable across all systems.

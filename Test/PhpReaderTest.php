@@ -9,30 +9,30 @@ class PhpReaderTest extends PHPUnit_Framework_TestCase {
 	* @expectedException FileDoesntExistException
 	*/
 	public function testFileDoesntExistException() {
-		$reader = PhpReader::getReader("Files/test.php");
+		$reader = PhpReader::getReader("Test/Files/test.php");
 	}
 
 	/**
 	* @expectedException InvalidFileTypeException
 	*/
 	public function testInvalidFileTypeException() {
-		$reader = PhpReader::getReader("Files/test.txt");
+		$reader = PhpReader::getReader("Test/Files/test.txt");
 	}
 
 	public function testCorrectReaderIsReturned() {
 
-		$reader = PhpReader::getReader("Files/test.csv");
+		$reader = PhpReader::getReader("Test/Files/test.csv");
 		$this->assertEquals("CsvReader", get_class($reader));
 
-		$reader = PhpReader::getReader("Files/test.xls");
+		$reader = PhpReader::getReader("Test/Files/test.xls");
 		$this->assertEquals("XlsReader", get_class($reader));
 
-		$reader = PhpReader::getReader("Files/test.xlsx");
+		$reader = PhpReader::getReader("Test/Files/test.xlsx");
 		$this->assertEquals("XlsxReader", get_class($reader));
 	}
 
 	public function testCsvReader() {
-		$reader = PhpReader::getReader("Files/test.csv");
+		$reader = PhpReader::getReader("Test/Files/test.csv");
 		foreach ($reader as $rowNumber => $rowData) {
 
 		}
