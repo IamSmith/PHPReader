@@ -28,7 +28,7 @@ class XlsReader implements IReader, Iterator {
 	public function __construct($pathToFile, $options) {
 		$this->file = $pathToFile;
 
-		if ($this->reader == null || !is_a($this->reader, "XlsReader") {
+		if (($this->reader == null) || (!is_a($this->reader, "PHPExcel_Reader_IReader"))) {
 			$this->reader = new PHPExcel_Reader_Excel5();
 		}
 		$this->filter = new RowByRowFilter();
