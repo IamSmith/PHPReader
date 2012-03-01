@@ -39,5 +39,8 @@ PHPExcel Links:
 ## Credits
 [Tom Smith](https://github.com/iamsmith/)
 
+Follow [@phpreader](https://twitter.com/#!/phpreader) on twitter
+Follow [@smithy07](https://twitter.com/#!/Smithy07) on twitter
+
 ## Licence
 Licenced under the [New BSD License](http://opensource.org/licenses/bsd-license.php)
