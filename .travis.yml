@@ -3,4 +3,8 @@ php:
   - 5.3
   - 5.4
 
+before_script:
+- pyrus install pearplex/PHPExcel
+- phpenv rehash
+
 script: phpunit --include-path . Test
