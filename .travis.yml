@@ -4,6 +4,7 @@ php:
   - 5.4
 
 before_script:
+- pyrus channel-discover pear.pearplex.net
 - pyrus install pearplex/PHPExcel
 - phpenv rehash
 
