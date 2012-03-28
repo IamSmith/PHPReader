@@ -113,4 +113,15 @@ class PhpReaderTest extends PHPUnit_Framework_TestCase {
 		);
 	}
 
+	public function testLargeXlsxFile() {
+		$startTime = time();
+		$reader = PhpReader::getReader("Test/Files/large-test.xlsx");
+		foreach ($reader as $rowNumber => $rowData) {
+
+		}
+		$timeTaken = time() - $startTime;
+
+		$this->assertLessThan(10, $timeTaken);
+	}
+
 }

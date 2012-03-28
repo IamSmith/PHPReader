@@ -15,7 +15,6 @@ class XlsReader implements IReader, Iterator {
 
 	protected $file;
 	protected $reader;
-	protected $filter;
 	protected $excelFile;
 
 	protected $position = 1;
@@ -23,7 +22,7 @@ class XlsReader implements IReader, Iterator {
 	protected $maxRow = 0;
 
 	protected $header = array();
-	protected $row = array();
+	protected $rows = array();
 
 	public function __construct($pathToFile, $options) {
 		$this->file = $pathToFile;
@@ -31,15 +30,13 @@ class XlsReader implements IReader, Iterator {
 		if (($this->reader == null) || (!is_a($this->reader, "PHPExcel_Reader_IReader"))) {
 			$this->reader = new PHPExcel_Reader_Excel5();
 		}
-		$this->filter = new RowByRowFilter();
-		$this->reader->setReadFilter($this->filter);
 
 		if (!in_array(PHPReader::OPTION_IGNORE_HEADER_ROW, $options)) {
-			$row = $this->getRow();
-			$this->header = $row[1];
+			$this->loadFile();
+			$this->header = $this->rows[1];
 		} else {
 			$this->includeHeader = false;
-			$row = $this->getRow();
+			$this->loadFile();
 			$this->maxRow = $this->excelFile->getActiveSheet()->getHighestRow();
 		}
 	}
@@ -58,9 +55,9 @@ class XlsReader implements IReader, Iterator {
 
 	public function current() {
 		if ($this->includeHeader) {
-			$this->current = array_combine($this->header, $this->row[$this->position]);
+			$this->current = array_combine($this->header, $this->rows[$this->position]);
 		} else {
-			$this->current = $this->row[$this->position];
+			$this->current = $this->rows[$this->position];
 		}
 		return $this->current;
 	}
@@ -70,8 +67,7 @@ class XlsReader implements IReader, Iterator {
 	}
 
 	public function valid() {
-		$this->row = $this->getRow();
-		return isset($this->row[$this->position]);
+		return isset($this->rows[$this->position]);
 	}
 
 	public function rewind() {
@@ -84,9 +80,14 @@ class XlsReader implements IReader, Iterator {
 	}
 
 	public function getRow() {
-		$this->filter->setRows($this->position, $this->interval);
-		$this->excelFile = $this->reader->load($this->file);
-		return $this->excelFile->getActiveSheet()->toArray(null, true, true, true);
+
+	}
+
+	public function loadfile() {
+		if ($this->excelFile == null) {
+			$this->excelFile = $this->reader->load($this->file);
+			$this->rows = $this->excelFile->getActiveSheet()->toArray(null, true, true, true);
+		}
 	}
 }
 
