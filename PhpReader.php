@@ -14,16 +14,24 @@ class PhpReader {
 
 	const OPTION_IGNORE_HEADER_ROW = 1;
 
-	static function getReader($pathToFile) {
+	static function getReader($pathToFile, $extensionOverride = null) {
 		$options = func_get_args();
+
+		if (is_numeric($extensionOverride)) {
+			$extensionOverride = null;
+		}
 
 		if (!file_exists($pathToFile)) {
 			throw new FileDoesntExistException("'$pathToFile' doesn't exist");
 		}
 
-		$extension = PhpReader::determineFileType($pathToFile);
-		$className = ucfirst($extension);
+		if ($extensionOverride == null) {
+			$extension = PhpReader::determineFileType($pathToFile);
+		} else {
+			$extension = strtolower($extensionOverride);
+		}
 
+		$className = ucfirst($extension);
 		return ExtensionFactory::$className($pathToFile, $options);
 	}
 

@@ -124,4 +124,11 @@ class PhpReaderTest extends PHPUnit_Framework_TestCase {
 		$this->assertLessThan(10, $timeTaken);
 	}
 
+	public function testExtensionOverrideFile() {
+		$reader = PhpReader::getReader("Test/Files/testFileNoExtension", "csv");
+		foreach ($reader as $rowNumber => $rowData) {
+
+		}
+	}
+
 }
