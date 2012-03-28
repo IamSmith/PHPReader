@@ -1,7 +1,6 @@
 language: php
 php:
   - 5.3
-#  - 5.4 PHPExcel does not support it
 
 before_script:
 - pyrus channel-discover pear.pearplex.net
